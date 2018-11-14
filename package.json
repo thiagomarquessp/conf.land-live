@@ -1,0 +1,8 @@
+{
+    "name": "faker",
+    "description": "Generate massive amounts of fake contextual data",
+    "version": "4.1.0",
+    "devDependencies": {
+        "@types/faker": "^4.1.4"
+    }
+}
