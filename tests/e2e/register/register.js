@@ -1,11 +1,9 @@
 // spec.js
 describe('Register new user', function() {
     it('Register new user with success', function() {
-        var faker = require('faker');
-        var name = faker.name.findName();
       browser.waitForAngularEnabled(false);
       browser.get('https://automacaocombatista.herokuapp.com/users/new');
-      element(by.name('user[name]')).sendKeys(name);
+      element(by.name('user[name]')).sendKeys('Thiago');
       element(by.name('user[lastname]')).sendKeys('Pereira');
       element(by.name('user[email]')).sendKeys('thiagomp@gmail.com')
       element(by.name('user[address]')).sendKeys('Rua Test')
@@ -22,8 +20,6 @@ describe('Register new user', function() {
         expect(items.length).toBe(8);
         expect(items[0].getText()).toBe('Nome: Thiago');
       });
-      
-      browser.driver.sleep(5000);
     });
   });
   
