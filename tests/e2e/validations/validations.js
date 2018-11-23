@@ -1,20 +1,29 @@
 // spec.js
-describe('Create Account validations', function() {
-    it('Validate the alert with display none', function() {
-      browser.waitForAngularEnabled(false);
-      browser.get('http://automationpractice.com');
-      element(by.css('.login')).click();
-      
-      var alert = element(by.css('.alert-danger'));
-      expect(alert.getAttribute('style')).toEqual('display: none;');
-      element(by.css('button#SubmitCreate')).click();
+global.LoginValidations = require('./validationsPage');
 
-    });
-
-    it('Validate the message and element is present at moment of submit create account button', function() {
-      var alertPresent = protractor.ExpectedConditions;
-      browser.wait(alertPresent.textToBePresentInElement($('.alert-danger li'), 'Invalid email address.'), 5000);
-
-    });
+describe('Login form validations', function() {
+  beforeAll(function() { 
+    browser.waitForAngularEnabled(false);
   });
+
+  it('Validate the login form size', function() {
+    LoginValidations.get();
+    expect(size_username.getAttribute('size')).toEqual('20');
+    expect(size_password.getAttribute('size')).toEqual('20');
+  });
+
+  it('Validate username error message to login', function() {
+    LoginValidations.setName('erroruser');
+    LoginValidations.setPass('errorpwd');
+    LoginValidations.btnLogin();
+    browser.wait(alertPresent.textToBePresentInElement($('.response'), 'ERROR: Invalid username. '), 5000);
+  });
+
+  it('Validate password error message to login', function() {
+    element(by.name('log')).clear();
+    LoginValidations.setName('test');
+    LoginValidations.btnLogin();
+    browser.wait(alertPresent.textToBePresentInElement($('.response'), 'ERROR: The password you entered for the username test is incorrect.'), 5000);
+  });
+});
   
