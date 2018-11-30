@@ -19,14 +19,14 @@ describe('Login form validations', function() {
     LoginValidations.setName('erroruser');
     LoginValidations.setPass('errorpwd');
     LoginValidations.btnLogin();
-    browser.wait(alertPresent.textToBePresentInElement($('.response'), 'ERROR: Invalid username. '), 5000);
+    browser.wait(alertPresent.textToBePresentInElement($('form[name="loginform"] .response'), 'ERROR: Invalid username. '), 5000);
   });
 
   it('error message when the user put an invalid password', function() {
     element(by.name('log')).clear();
     LoginValidations.setName('test');
     LoginValidations.btnLogin();
-    browser.wait(alertPresent.textToBePresentInElement($('.response'), 'ERROR: The password you entered for the username test is incorrect.'), 5000);
+    browser.wait(alertPresent.textToBePresentInElement($('form[name="loginform"] .response'), 'ERROR: The password you entered for the username test is incorrect.'), 5000);
   });
 });
   

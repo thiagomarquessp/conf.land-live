@@ -1,7 +1,7 @@
 var LoginValidations = function() {
     var nameInput = element(by.name('log'));
     var passInput  = element(by.name('pwd'));
-    var loginbtn = element(by.name('submit'));
+    var loginbtn = element(by.css('#login'));
     
     global.size_username = element(by.css('input[name="log"]'));
     global.size_password = element(by.css('input[name="pwd"]'));
